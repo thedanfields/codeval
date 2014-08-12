@@ -56,3 +56,28 @@ func determineNumber(numberOfHalves int) (theNumber int) {
 
 	return
 }
+
+func generate(toLength int) (gennedString string) {
+	gennedString = "0"
+	for len(gennedString) < toLength {
+		gennedString += translate(gennedString)
+	}
+
+	return
+}
+
+func translate(someString string) string {
+	trans := func(r rune) rune {
+		switch {
+		case r == '0':
+			return '1'
+		case r == '1':
+			return '2'
+		case r == '2':
+			return '0'
+		}
+		return r
+	}
+
+	return strings.Map(trans, someString)
+}
